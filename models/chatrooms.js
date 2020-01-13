@@ -9,12 +9,13 @@ con.query(FriendsSchema, (err, data) => {
   if (err) console.error(err);
   else console.log("chatrooms Table IS UP");
 });
-
+// take user1 and user2 and create a chatroom for them
 function CreateRoom(user1, user2) {
   return con.query(
     `INSERT into chatrooms(userone,usertwo) VALUES ('${user1}', '${user2}')`
   );
 }
+// take user1 and user2 and get thier chat room
 function findRoom(user1, user2) {
   return con.query(
     `SELECT idno FROM chatrooms WHERE userone = '${user1}' AND usertwo =  '${user2}' OR userone = '${user2}' AND usertwo =  '${user1}'`
